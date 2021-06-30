@@ -2,7 +2,7 @@ import cv2
 import copy
 
 
-# 映射表
+# The mapping table
 l_array = [0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1,
            1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1,
            0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1,
@@ -23,9 +23,9 @@ l_array = [0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1,
 
 def v_thin(img):
     """
-    细化函数，根据算法，运算出中心点的对应值
-    :param img: 需要细化的图片（经过二值化处理的图片）
-    :param array: 映射矩阵array
+    Refining function, according to the algorithm, the corresponding value of the center point
+    :param img: Images that need to be refined (images that have been binarized)
+    :param array
     :return:
     """
     h, w = img.shape
@@ -49,12 +49,7 @@ def v_thin(img):
 
 
 def h_thin(img):
-    """
-    细化函数，根据算法，运算出中心点的对应值
-    :param img: 需要细化的图片（经过二值化处理的图片）
-    :param array: 映射矩阵array
-    :return:
-    """
+
     h, w = img.shape
     i_next = 1
     for j in range(w):
@@ -84,11 +79,7 @@ def extract_skeleton(img, num=10):
 
 
 def to_binary(img):
-    """
-    二值化函数，阈值根据图片的昏暗程序自己设定
-    :param img: 需要二值化的图片
-    :return:
-    """
+
     w, h = img.shape
     i_two = copy.deepcopy(img)
     for i in range(w):

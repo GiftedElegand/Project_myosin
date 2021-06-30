@@ -39,16 +39,18 @@ def Box_point(path):
                           edgecolor='r', facecolor='none')
         ax.add_patch(patch)
     ax.imshow(tree)
-    ax.set_axis_off() 
-    plt.savefig("WT_single_tif_for_model/Step3_boxPoint/test_box.tif")
-    plt.show()
-    fig, ax = plt.subplots(1, len(blob_coordinates), figsize=(15, 5))
-    for n, axis in enumerate(ax.flatten()):
-        axis.imshow(tree[int(blob_coordinates[n][0]):
-                         int(blob_coordinates[n][2]),
-                    int(blob_coordinates[n][1]):
-                    int(blob_coordinates[n][3])])
-    fig.tight_layout()
-    plt.savefig("WT_single_tif_for_model/Step3_boxPoint/test_overlay.tif")
-    plt.show()
-Box_point("WT_single_tif_for_model/Step2_thin/wt1_thin.tif")
+    ax.set_axis_off()
+    return plt
+
+    # plt.show()
+    # fig, ax = plt.subplots(1, len(blob_coordinates), figsize=(15, 5))
+    # for n, axis in enumerate(ax.flatten()):
+    #     axis.imshow(tree[int(blob_coordinates[n][0]):
+    #                      int(blob_coordinates[n][2]),
+    #                 int(blob_coordinates[n][1]):
+    #                 int(blob_coordinates[n][3])])
+    # fig.tight_layout()
+    # plt.savefig("WT_single_tif_for_model/Step3_boxPoint/test_overlay.tif")
+    # plt.show()
+image = Box_point("WT_single_tif_for_model/Step2_thin/wt1_thin.tif")
+image.savefig("WT_single_tif_for_model/Step3_boxPoint/test_box.tif")
