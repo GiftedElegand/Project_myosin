@@ -75,7 +75,7 @@ def h_thin(img):
                         i_next = 0
 
 
-def xi_hua(img, num=10):
+def extract_skeleton(img, num=10):
     for i in range(num):
         v_thin(img)
         h_thin(img)
@@ -99,15 +99,3 @@ def to_binary(img):
                 i_two[i, j] = 0
 
     return i_two
-
-
-# 入口函数
-if __name__ == '__main__':
-    # 读取图片，并显示
-    image = cv2.imread("WT_single_tif_for_model/P1_OTSU/we1.tif", 0)
-    img_binary = to_binary(image)
-    cv2.imshow("image", image)
-    cv2.imshow("img_binary", img_binary)
-    img_thin = xi_hua(img_binary)
-    cv2.imshow("img_thin", img_thin)
-    cv2.waitKey(0)

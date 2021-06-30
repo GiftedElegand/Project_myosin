@@ -16,6 +16,7 @@ from tqdm import tqdm
 
 def Box_point(path):
     tree = imread(path)
+    tree =255-tree
     tree_blobs = label(tree > 50)
     # 展示按照区块显示的图片,展示图片的一种方式
     imshow(tree_blobs, cmap='BuGn')
@@ -39,7 +40,7 @@ def Box_point(path):
         ax.add_patch(patch)
     ax.imshow(tree)
     ax.set_axis_off() 
-    plt.savefig("WT_single_tif_for_model/test/test_box.tif")
+    plt.savefig("WT_single_tif_for_model/Step3_boxPoint/test_box.tif")
     plt.show()
     fig, ax = plt.subplots(1, len(blob_coordinates), figsize=(15, 5))
     for n, axis in enumerate(ax.flatten()):
@@ -48,6 +49,6 @@ def Box_point(path):
                     int(blob_coordinates[n][1]):
                     int(blob_coordinates[n][3])])
     fig.tight_layout()
-    plt.savefig("WT_single_tif_for_model/test/test_overlay.tif")
+    plt.savefig("WT_single_tif_for_model/Step3_boxPoint/test_overlay.tif")
     plt.show()
-Box_point("WT_single_tif_for_model/overlay/wt1_overlay_cut.tif")
+Box_point("WT_single_tif_for_model/Step2_thin/wt1_thin.tif")
