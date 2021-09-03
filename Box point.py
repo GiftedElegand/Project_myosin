@@ -32,9 +32,13 @@ def Box_point(path):
                          row['bbox-2'], row['bbox-3']) for
                         index, row in df.iterrows()]
     fig, ax = plt.subplots(1, 1, figsize=(8, 6), dpi=80)
+    point_list = []
     for blob in tqdm(blob_coordinates):
         width = blob[3] - blob[1]
+        point_x = width / 2 + blob[1]
         height = blob[2] - blob[0]
+        point_y = height / 2 + blob[0]
+        point_list.append([int(point_x), int(point_y)])
         patch = Rectangle((blob[1], blob[0]), width, height,
                           edgecolor='r', facecolor='none')
         ax.add_patch(patch)
@@ -42,15 +46,5 @@ def Box_point(path):
     ax.set_axis_off()
     return plt
 
-    # plt.show()
-    # fig, ax = plt.subplots(1, len(blob_coordinates), figsize=(15, 5))
-    # for n, axis in enumerate(ax.flatten()):
-    #     axis.imshow(tree[int(blob_coordinates[n][0]):
-    #                      int(blob_coordinates[n][2]),
-    #                 int(blob_coordinates[n][1]):
-    #                 int(blob_coordinates[n][3])])
-    # fig.tight_layout()
-    # plt.savefig("WT_single_tif_for_model/Step3_boxPoint/test_overlay.tif")
-    # plt.show()
-image = Box_point("WT_single_tif_for_model/Step2_thin/wt1_thin.tif")
-image.savefig("WT_single_tif_for_model/Step3_boxPoint/test_box.tif")
+image = Box_point("WT_single_tif_for_model/Step2_thin/wt1.tif")
+image.savefig("WT_single_tif_for_model/Step3_boxPoint/wt1_test_box.tif")
